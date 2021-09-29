@@ -1,9 +1,12 @@
-//moving black
-//transition to "ejected" screen MAYBE
+//moving black among us character
+//transition to still green among us character staring deep into soul
 
 PImage img;
 PImage img2;
 
+float x;
+float y;
+float easing = 0.01;
 void setup() {
   size(750, 750);
   img2 = loadImage ("Green.png");
@@ -11,11 +14,17 @@ void setup() {
 }
 
 void draw() {
-  background(#191A43);
-
-  if (mousePressed) {
-    image(img2, 100, 100);
-  } else {
-    image(img, 0, 0);
+  background(#AAC3FF);
+  
+  float targetX = mouseX;
+  x += (targetX - x)+easing;
+  float targetY = mouseY;
+  y += (targetY - y)+easing;
+  imageMode(CENTER);
+  image(img,x,y);
+  
+    if (mousePressed) {
+      imageMode(CENTER);
+      image(img2, 375, 375);
+    }
   }
-}
